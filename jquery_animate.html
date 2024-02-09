@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>animate demo</title>
+    <style>
+        div {
+            position: relative;
+            background-color: #abc;
+            width: 40px;
+            height: 40px;
+            float: left;
+            margin: 5px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+</head>
+
+<body>
+
+    <p><button id="go">Run »</button></p>
+    <p><button id="reset">Reset !</button></p>
+    <div id="1" class="block">1</div>
+    <div id="2" class="block">1</div>
+    <div id="3" class="block">1</div>
+    <div id="4" class="block">1</div>
+    <div id="5" class="block">a</div>
+    <div id="6" class="block">1</div>
+
+
+    <script>
+        $("#go").on("click", function () {
+            $(".block").first().animate({ now: 300 }, {
+                duration: 3000, step: function (now, fx) { $(".block").slice(0).css("left", now); }
+            });
+        });
+        $('#reset').on("click", function () {
+            var boole = "";
+            for (i = 1; i <= 6; i++) {
+                boole = $("#"+i).text() == 'a' ? $("#"+i).html('g') : null;
+            }
+            $('div').stop().css({
+                left: ""
+            }).add(boole); 
+        });
+    </script>
+
+</body>
+
+</html>
