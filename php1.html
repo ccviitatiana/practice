@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <?php
+$alto = array($_REQUEST["alto"]);
+$ancho = array($_REQUEST["ancho"]);
+
+if(count($alto)==count($ancho)) {
+    $newarray = array();
+    for($i=0; $i<count($alto); $i++) {
+        array_push($alto[$i]*$ancho[$i]);
+    }
+}
+
+
+$altosorted = asort($alto);
+$anchosorted = asort($ancho);
+
+?>
+    <form action="main.php">
+        <p>Alto:<input type="text" name="alto"></p>
+        <p>Ancho:<input type="text" name="ancho"></p><br>
+        <button type="submit">enviar</button>
+    </form>
+</body>
+
+</html>
