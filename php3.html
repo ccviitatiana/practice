@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php
+$w = array("sol","luna","cielo");
+$wd = array();
+$form = "<form action='analisis.php'>";
+$button = "<button type='submit'>enviar</button>";
+$forme = "</form>";
+
+for($i=0;$i<count($w);$i++) {
+    $form .= "la palabra: ".str_shuffle($w[$i])." ".
+    "<input type='text' name='p".$i."'>"."<br>";
+}
+
+echo $form.$button.$forme;
+
+?>
+<?php
+$w = array("sol","luna","cielo");
+$h1 = "<p>";
+$h1e = "</p>";
+
+for($i=0;$i<count($w);$i++) {
+    if($_REQUEST["p{$i}"]==$w[$i]) {
+        $i+=1; $h1 .= "La palabra ".$i." fue escrita correctamente".".<br>"; $i-=1;
+    } else {
+        $i+=1; $h1 .= "La palabra ".$i." fue escrita incorrectamente, ".
+        "la palabra correcta es ".$w[$i-1].".<br>";  $i-=1;
+    }
+}
+
+echo $h1.$h1e;
+?>
+    <form action="main.php">
+        <button type="submit">iniciar?</button>
+    </form>
+
+</body>
+</html>
